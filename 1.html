@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Consent Popup</title>
+
+  <!-- ✅ Preload background image -->
+  <link rel="preload" as="image" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYAEqdhmVXJ0NtWj1xQVXBtQPx4x5uF1HknJJwxNeJHYeiapJPVajeNGWAmcmX8jWaHsxlz_NShIquJ12WxBEAfTSvqYCjo6sjjr98QEVaQfMJSNTakQRWhCibxMloGsJBEJY2gn2WUL6oqjd9O3BzELyWb3xFk5cUbzQ1ItfXfJIpRbRw1mrFw4TZHEQ/s1600/Screenshot%202025-11-12%20at%203.35.38%E2%80%AFPM.webp">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    /* ✅ Background section with smooth fade-in */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, #ffffff, #f5f5f5);
+      z-index: 1;
+      transition: opacity 0.6s ease;
+      opacity: 0;
+    }
+
+    .background.loaded {
+      background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYAEqdhmVXJ0NtWj1xQVXBtQPx4x5uF1HknJJwxNeJHYeiapJPVajeNGWAmcmX8jWaHsxlz_NShIquJ12WxBEAfTSvqYCjo6sjjr98QEVaQfMJSNTakQRWhCibxMloGsJBEJY2gn2WUL6oqjd9O3BzELyWb3xFk5cUbzQ1ItfXfJIpRbRw1mrFw4TZHEQ/s1600/Screenshot%202025-11-12%20at%203.35.38%E2%80%AFPM.webp');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      filter: blur(2px) brightness(0.9);
+      opacity: 1;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    /* Popup */
+    .popup {
+      background: #fff;
+      border-radius: 18px;
+      padding: 32px 28px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .popup h2 {
+      font-size: 22px;
+      color: #222;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .popup p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6em;
+      margin: 0;
+    }
+
+    .buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.25s;
+      padding: 12px 20px;
+      font-weight: 600;
+    }
+
+    .allow {
+      background-color: #ffd22f;
+      color: #000;
+    }
+
+    .allow:hover {
+      background-color: #ffcc00;
+      transform: translateY(-1px);
+    }
+
+    .close {
+      background-color: #fff;
+      border: 2px solid #ffd22f;
+      color: #222;
+    }
+
+    .close:hover {
+      background-color: #ffd22f;
+      color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 480px) {
+      .popup {
+        padding: 24px 20px;
+      }
+      .popup h2 {
+        font-size: 20px;
+      }
+      .popup p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="background" id="bg"></div>
+
+  <!-- Popup -->
+  <div class="overlay">
+    <div class="popup">
+      <h2>🍪 Cookie Policy</h2>
+      <p>
+        We use cookies to improve your experience, personalize content, and analyze traffic.
+        By clicking <strong>Allow</strong>, you agree to our cookie policy.
+      </p>
+      <div class="buttons">
+        <button class="btn allow" onclick="redirect('https://seoservice786.blogspot.com/p/stealthwriter.html')">Allow</button>
+        <button class="btn close" onclick="redirect('https://seoservice786.blogspot.com/p/stealthwriter.html')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load background image efficiently and fade it in
+    const bg = document.getElementById('bg');
+    const img = new Image();
+    img.src = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYAEqdhmVXJ0NtWj1xQVXBtQPx4x5uF1HknJJwxNeJHYeiapJPVajeNGWAmcmX8jWaHsxlz_NShIquJ12WxBEAfTSvqYCjo6sjjr98QEVaQfMJSNTakQRWhCibxMloGsJBEJY2gn2WUL6oqjd9O3BzELyWb3xFk5cUbzQ1ItfXfJIpRbRw1mrFw4TZHEQ/s1600/Screenshot%202025-11-12%20at%203.35.38%E2%80%AFPM.webp';
+    img.onload = () => {
+      bg.classList.add('loaded');
+    };
+
+    function redirect(url) {
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
+
